@@ -6,11 +6,7 @@ nodePort Access
 
 minikube service --url <service-name>
 
-
-
 kubectl patch service istio-ingressgateway -n istio-system -p '{"spec":{"type":"NodePort"}}' 
-
-
 
 
 kiali无法访问的问题：
