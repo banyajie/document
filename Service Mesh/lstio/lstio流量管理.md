@@ -1,4 +1,4 @@
-#### 流量管理（超时、重试、负载均衡）
+#### 流量管理（路由、超时、重试、负载均衡）
 
 >   Istio 能够让我们很容易地控制服务之间的网络流量，这是通过两个概念来实现的，即`DestinationRule`和`VirtualService`。
 >
@@ -12,6 +12,8 @@
 >   -   mTLS
 >   -   回弹性
 >   -   使用标签（label）指定服务的子集（subset），这些子集会在`VirtualService`中用到。
+
+
 
 
 
@@ -46,12 +48,12 @@ rating         LoadBalancer   10.109.106.128   &lt;pending&gt;     8080:31216/TC
      >   apiVersion: networking.istio.io/v1alpha3
      >   kind: DestinationRule
      >   metadata:
-     >    name: rating
+     >    	name: rating
      >   spec:
-     >    host: rating    # kubernetes service 的dns域名
-     >    subsets:        # 创建两个子集
+     >    	host: rating    # kubernetes service 的dns域名
+     >    subsets:        	# 创建两个子集
      >    - labels:
-     >        app.kubernetes.io/version: v1.0.0    # 带本标签的pod
+     >        app.kubernetes.io/version: v1.0.0    # 选择器，带标签的pod
      >      name: version-v1
      >    - labels:
      >        app.kubernetes.io/version: v2.0.0    # 
@@ -163,8 +165,8 @@ rating         LoadBalancer   10.109.106.128   &lt;pending&gt;     8080:31216/TC
      >   问题描述：
      >
      >   	1. 如果服务已经处于过载状态的话，发送更多的请求对它的恢复就会导致恢复更慢
-     >    	2. 服务出现故障，重试不会解决问题
-     >    	3. 每次重试，都会增加负载（网络流量、socket等等）
+     >   	2. 服务出现故障，重试不会解决问题
+     >   	3. 每次重试，都会增加负载（网络流量、socket等等）
 
      ```yaml
      apiVersion: networking.istio.io/v1alpha3
@@ -300,5 +302,7 @@ rating         LoadBalancer   10.109.106.128   &lt;pending&gt;     8080:31216/TC
 6.   镜像功能
 
      >   流量镜像，也称为影子流量，是一个以尽可能低的风险为生产带来变化的强大的功能。镜像会将实时流量的副本发送到镜像服务。镜像流量发生在主服务的关键请求路径之外
+     >
+     >   
      >
      >   

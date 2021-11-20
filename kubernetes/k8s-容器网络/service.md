@@ -19,7 +19,7 @@ spec: 			# 描述
       nodePort: 31122 # 主机端口
 ```
 
-```
+```shell
 service 类型：
 
 ClusterIP：默认值，它是Kubernetes系统自动分配的虚拟IP，只能在集群内部访问
@@ -28,6 +28,8 @@ LoadBalancer：使用外接负载均衡器完成到服务的负载分发，注�
 ExternalName： 把集群外部的服务引入集群内部，直接使用
 
 ```
+
+
 
 ```yaml
 
