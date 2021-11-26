@@ -1,8 +1,111 @@
-#### docker 学习
+#### Docker
 
--   docker 安装
+##### Docker 架构图
 
-    >   
+![img](https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftva1.sinaimg.cn%2Flarge%2F00831rSTly1gd9pnl499jj30tg0gkwj1.jpg&refer=http%3A%2F%2Ftva1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640489356&t=1844a0934fbab1649377fb704fe56f19)
+
+-   镜像：容器模板，通过image创建容器
+-   容器：
+-   仓库：
+
+##### Docker 安装
+
+>   安装：https://docs.docker.com/engine/install/
+>
+>   配置
+>
+>   加速器
+
+##### Docker 命令
+
+###### 常用命令
+
+>   ```shell
+>   
+>   ```
+>
+>   
+
+###### 镜像命令
+
+>   ```shell
+>   docker images 		# 查看主机上的所有镜像
+>   docker images -a 	# 所有
+>   docker images -q 	# 只显示镜像ID
+>   
+>   docker search imageName 	# 搜索镜像
+>   # 过滤
+>   docker search imageName --fileter=STARTS=3000	# 搜索starts > 3000
+>   
+>   docker pull
+>   
+>   # 删除
+>   docker rmi -f $(docker images -qa)
+>   docker images -qa | docker rm -f -
+>   
+>   
+>   docker image COMMEND
+>   docker image build -f dockerfile xx xx
+>   docker image history 
+>   docker image import 		    # docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+>   docker image inspect xxxx		# inspect
+>   docker image load
+>   
+>   docker image ls
+>   docker image pull		
+>   docker image push
+>   docker image rm
+>   docker image save
+>   docker image tag
+>   docker image prune 			 	# Remove unused images
+>   ```
+>
+>   
+
+###### 容器命令
+
+>   ```shell
+>    docker run -d				# 后台启动
+>    
+>    docker run -d iamgeName --name newName -c "while true; do echo xxx; "
+>    docker logs -tf -tail 10 imagesID		# 日志
+>    
+>    docker top containerID		# 查看容器内部的进程信息
+>    
+>    docker inspect containerID # 查看容器信息
+>    
+>    # 进入容器、新启动一个交互命令行
+>    docker exec -it containerID /bin/bash 
+>    
+>    # 进入容器（当前正在运行的命令行）
+>    docker attach containerID 
+>    
+>    
+>    # 从容器里面cp东西
+>    docker cp containerID:/dir /
+>    
+>    
+>   ```
+>
+>   
+
+###### 操作命令
+
+##### Docker 镜像
+
+##### Docker 数据卷
+
+##### DockerFIle
+
+##### Docker 网络原理
+
+##### Docker Compose
+
+##### Docker Swarm
+
+##### CI/CD
+
+##### 源码
 
 -   docker命令
 

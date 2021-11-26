@@ -1,3 +1,5 @@
+
+
 ###  服务网格（ServiceMesh）
 
 >   服务网格是一个专用的基础设施层，目的在于使得服务与服务之间的通信变得安全、快速和可靠。
@@ -74,6 +76,14 @@
 
 ##### istio 注入
 
+>   安装：
+>
+>   ```shell
+>   istioctl manifest apply --set profile=demo
+>   ```
+>
+>   
+>
 >   自动注入：
 >
 >   ```shell
