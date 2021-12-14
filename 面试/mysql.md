@@ -69,7 +69,15 @@
 
 ##### 日志
 
->   -   redolog（重做日志）：工作再存储引擎层，Innodb引擎特有的。固定大小。循环写。保证db的crash-safe能力。
+>   -   redolog（重做日志）
+>       -   工作再存储引擎层，Innodb引擎特有的。固定大小。循环写。保证db的crash-safe能力。
+>       -   确保事务的持久性，防止故障发生的时间点，尚有脏页未写入磁盘，在重启mysql的时候，根据 redo log 重做，从而达到事务的持久性
+>       -   物理日志（事务开始之后就开始，事务执行过程中一直写入，对应事务的脏页写入磁盘后就可以清理、覆盖了）
+>   -   undolog（回滚日志）
+>       -   保存事务之前数据的一个版本，可以用于回滚，同时提供多版本并发控制下的读（MVCC）
+>       -   逻辑格式日志
+>       -    什么时候产生：事务开始之前
+>       -    什么时候释放：当事务提交之后，并不会马上清理，放在版本链里面。由purge线程清理
 >   -   binlog（归档日志）：工作在server层。所有存储引擎都可以使用。追加写
 >       -   Mysql  主备同步基本原理 ？
 >           -   <img src="/Users/banyajie/Library/Application%20Support/typora-user-images/image-20211126110546660.png" alt="image-20211126110546660"  />
@@ -79,6 +87,10 @@
 >           -   row
 >           -   mixed（statement + row）
 >       -   循环复制问题 ？
+>   -   errlog（错误日志）
+>   -   slow query log（慢查询日志）
+>   -   general log（一般查询日志）
+>   -   relay log（中继日志）
 
 
 
