@@ -15,6 +15,8 @@
 
 
 
+kubectl port-forward service/istio-ingressgateway 30883:80 -n istio-system
+
 
 
 服务架构
