@@ -4,7 +4,7 @@
 
 ###### 逻辑架构图
 
-![image-20211124143304381](/Users/banyajie/Library/Application%20Support/typora-user-images/image-20211124143304381.png)
+
 
 ###### server层
 
@@ -357,7 +357,7 @@
 >       -   ```mysql
 >            读锁（S锁、共享锁）
 >            select k from t where id=1 lock in share mode;
->                    
+>                            
 >            写锁（排他锁）
 >            select k from t where id=1 for update;
 >           ```
@@ -498,3 +498,29 @@
 ##### 常见问题
 
 >   
+
+CREATE TABLE `geek` (
+  `a` int(11) NOT NULL,
+  `b` int(11) NOT NULL,
+  `c` int(11) NOT NULL,
+  `d` int(11) NOT NULL,
+  PRIMARY KEY (`a`,`b`),
+  KEY `c` (`c`),
+  KEY `ca` (`c`,`a`),
+  KEY `cb` (`c`,`b`)
+) ENGINE=InnoDB;
+
+索引是否合理
+
+
+
+如果你要删除一个表里面的前10000行数据，有以下三种方法可 以做到:
+
+- 第一种，直接执行delete from T limit 10000;
+
+- 第二种，在一个连接中循环执行20次 delete from T limit 500;
+
+- 第三种，在20个连接中同时执行delete from T limit 500
+
+
+
