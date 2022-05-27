@@ -10,7 +10,6 @@
 >       -   Kubernetes 可以使用 DNS 名称或自己的 IP 地址公开容器，如果进入容器的流量很大， Kubernetes 可以负载均衡并分配网络流量，从而使部署稳定。
 >   -   **自动部署和回滚**
 >       -   Kubernetes 允许你自动挂载你选择的存储系统，例如本地存储、公共云提供商等。
->   -   **自动部署和回滚**
 >   -   **自动完成装箱计算**
 >       -   Kubernetes 允许你指定每个容器所需 CPU 和内存（RAM）。 当容器指定了资源请求时，Kubernetes 可以做出更好的决策来管理容器的资源。
 >   -   **自我修复**
@@ -933,20 +932,20 @@ spec:
 >           # 文件2 /conf/ui.properties
 >           color.good= purpe
 >           ...
->           
+>               
 >           # 创建
 >           kubectl create configmap game-config --from-file=/conf
->           
+>               
 >           # 目录下的所有文件都会在 configMap 中创建出来，key名称是文件名。 value 是文件内容
 >           
 >           
 >           kubectl describe configmap game-config
->           
+>               
 >           Name:         game-config
 >           Namespace:    default
 >           Labels:       <none>
 >           Annotations:  <none>
->           
+>               
 >           Data
 >           ====
 >           game.properties:
@@ -971,7 +970,7 @@ spec:
 >           
 >           BinaryData
 >           ====
->           
+>               
 >           Events:  <none>
 >           
 >           
@@ -981,7 +980,7 @@ spec:
 >   -   使用字面值创建
 >
 >       -   ```shell
->           
+>                   
 >           kubectl create configmap config2 --from-literal=special.how=very --from-literal=special.type=charm
 >           
 >           
@@ -991,7 +990,7 @@ spec:
 >           Namespace:    default
 >           Labels:       <none>
 >           Annotations:  <none>
->           
+>               
 >           Data
 >           ====
 >           special.how:
@@ -1000,17 +999,17 @@ spec:
 >           special.type:
 >           ----
 >           charm
->           
+>               
 >           BinaryData
 >           ====
->           
+>               
 >           Events:  <none>
 >           
 >           
 >           
 >           
 >           ```
->
+>    
 >       -   
 >
 >   使用场景：
@@ -1036,7 +1035,7 @@ spec:
 >           	namespace: default
 >           data:
 >           	log_level: INFO
->           	
+>           	    
 >           ---
 >           # 在pod中使用configMap
 >           apiVersion: v1
@@ -1064,7 +1063,7 @@ spec:
 >                 	- configMapRef:
 >                 		name: env-config
 >                 restartPolicy: Never
->                 
+>                     
 >           ---
 >           # 在数据卷中使用
 >           apiVersin: v1
@@ -1083,10 +1082,10 @@ spec:
 >               	- name: config-volume
 >               	  configMap:
 >               	  	name: spacial-config
->               	  	
+>               	  	    
 >               restartPolicy: Nerver
 >           ```
->
+>    
 >       -   
 
 ##### Secret
