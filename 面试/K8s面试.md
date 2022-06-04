@@ -7,6 +7,16 @@
 > deployment
 >
 > service
+>
+> 
+
+###### CRD
+
+> Custom Resource Definitionition 自定义资源类型
+>
+> K8s 通过 ApiServer，在Etcd中注册一个新的资源类型，通过实现 Custom Controller 来监听资源对象的事件变化
+>
+> 
 
 ###### Operator 
 
@@ -14,7 +24,7 @@
 
 > Operator 的工作原理，实际上是利用了 Kubernetes 的自定义 API 资源（CRD），来描述我们想要部署的“有状态应用”；然后在自定义控制器里，根据自定义 API 对象的变化，来完成具体的部署和运维工作。
 >
-> 
+> Operator 是感知应用状态的控制器。目的为简化复杂的、有状态的应用的管理的框架。通过扩展 k8s Api来自动创建、管理和配置应用实例
 >
 > Operator 是描述、部署和管理 kubernetes 应用的一套机制，从实现上说，可以将其理解为 CRD 配合可选的webhook 与 controller来实现用户业务逻辑
 >
