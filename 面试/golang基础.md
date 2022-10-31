@@ -30,7 +30,7 @@
 >
 >   问题：
 >
->   -   为什么string类型的数据不允许修改？？
+>   -   为什么string类型的数据不允 许修改？？
 >       -   go语言的实现中，string结构不包含内存空间，只有一个内存的指针，这样的好处是string非常轻量，可以很方便的传递并且不会发生内存拷贝。
 >       -   string通常指向字符串字面量，而字符串字面量的存储位置在只读段上，而不是堆栈。
 >   -   []byte 转换string一定会发生内存转换吗？
@@ -175,11 +175,11 @@
 >           // 所谓单向channel只是对channel的一种使用限制
 >           // func readChan(chanName <-chan int)： 通过形参限定函数内部只能从channel中读取数据
 >           // func writeChan(chanName chan<- int)： 通过形参限定函数内部只能向channel中写入数据
->                   
+>                           
 >           func readChan(chanName <-chan int) {
 >               <- chanName
 >           }
->                   
+>                           
 >           func writeChan(chanName chan<- int) {
 >               chanName <- 1
 >           }
@@ -198,9 +198,9 @@
 >                   println("")
 >               }
 >           }
->                   
+>                           
 >           // 如果channel中没有可读数据，select有default的情况下是不会阻塞的
->                   
+>                           
 >           ```
 >
 >   -   range
@@ -211,9 +211,9 @@
 >                   fmt.Printf("Get element from chan: %d\n", e)
 >               }
 >           }
->                           
+>                                           
 >           //注意：如果向此channel写数据的goroutine退出时，系统检测到这种情况后会panic，否则range将会永久阻塞。
->                           
+>                                           
 >           ```
 >
 >           
@@ -242,25 +242,25 @@
 >
 >       -   ```go
 >           package main
->                         
+>                                       
 >           import (
 >               "reflect"
 >               "fmt"
 >           )
->                         
+>                                       
 >           type Server struct {
 >               ServerName string `key1:"value1" key11:"value11"`
 >               ServerIP   string `key2:"value2"`
 >           }
->                         
+>                                       
 >           func main() {
 >               s := Server{}
 >               st := reflect.TypeOf(s)
->                         
+>                                       
 >               field1 := st.Field(0)
 >               fmt.Printf("key1:%v\n", field1.Tag.Get("key1"))
 >               fmt.Printf("key11:%v\n", field1.Tag.Get("key11"))
->                         
+>                                       
 >               filed2 := st.Field(1)
 >               fmt.Printf("key2:%v\n", filed2.Tag.Get("key2"))
 >           }
@@ -519,15 +519,13 @@
 >   woken状态
 >   Woken状态用于加锁和解锁过程的通信，举个例子，同一时刻，两个协程一个在加锁，一个在解锁，在加锁的协程可能在自旋过程中，此时把Woken标记为1，用于通知解锁协程不必释放信号量了，好比在说：你只管解锁好了，不必释放信号量，我马上就拿到锁了。
 >   
->   
->   
 >   ```
->
+>   
 >   加锁过程
 >
 >   -   普通加锁成功    Locked = 1
->   -   加锁阻塞            Locked = 1、Waiter += 1
->
+>-   加锁阻塞            Locked = 1、Waiter += 1
+>   
 >   解锁
 >
 >   -   如果Waiter > 0 解锁后并唤醒协程，唤醒后获得锁
@@ -555,10 +553,10 @@
 >   自旋条件？
 >
 >   -   自旋次数要足够小，通常为4，即自旋最多4次
->   -   CPU核数要大于1，否则自旋没有意义，因为此时不可能有其他协程释放锁
+>-   CPU核数要大于1，否则自旋没有意义，因为此时不可能有其他协程释放锁
 >   -   协程调度机制中的Process数量要大于1，比如使用GOMAXPROCS()将处理器设置为1就不能启用自旋
 >   -   协程调度机制中的可运行队列必须为空，否则会延迟协程调度
->
+>   
 >   
 >
 >   自旋的好处
@@ -1157,3 +1155,8 @@
 
 #### 包管理
 
+
+
+
+
+1：
